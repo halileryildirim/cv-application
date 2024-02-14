@@ -3,10 +3,10 @@ import About from "./About";
 import AboutForm from "./AboutForm";
 
 function DOM() {
-    const [submittedData, setSubmittedData] = useState(null);
+    const [aboutData, setAboutData] = useState(null);
 
     function handleFormSubmit(formData) {
-        setSubmittedData(formData);
+        setAboutData(formData);
     }
     
     return (
@@ -16,11 +16,9 @@ function DOM() {
             </div>
 
             <div className="cv-page">
-                <About submittedData={submittedData}/>
+                <About submittedData={aboutData}/>
             </div>
-        </>
-
-        
+        </>        
     )
 }
 
