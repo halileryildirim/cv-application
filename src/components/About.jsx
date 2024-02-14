@@ -1,16 +1,20 @@
-function About(props) {
+function About( {submittedData} ) {
 
     return (
         <div className="about">
-            <h1>{props.firstName} {props.lastName}</h1>
+            { submittedData && (
+                <>
+                    <h1>{submittedData.firstName} {submittedData.lastName}</h1>
 
-            <div className="contact">
-                <p>{props.email}</p>
-                <p>{props.phone}</p>
-            </div>
+                    <div className="contact">
+                        <p>{submittedData.email}</p>
+                        <p>{submittedData.phone}</p>
+                    </div>     
+                </>
+            )}
         </div>
     )
 
 }
 
-export default About
+export default About;

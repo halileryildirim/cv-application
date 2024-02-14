@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function AboutForm() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
+function AboutForm({onSubmit, initialData}) {
+    const [firstName, setFirstName] = useState(initialData?.firstName || '');
+    const [lastName, setLastName] = useState(initialData?.lastName || '');
+    const [phone, setPhone] = useState(initialData?.phone || '');
+    const [email, setEmail] = useState(initialData?.email || '');
 
     function handleFirstName(e) {
         setFirstName(e.target.value);
@@ -24,6 +24,15 @@ function AboutForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const formData = {
+            firstName,
+            lastName,
+            phone,
+            email,
+        };
+
+        onSubmit(formData);
     }
 
     return (
@@ -67,4 +76,4 @@ function AboutForm() {
     )
 }
 
-export default AboutForm
+export default AboutForm;
