@@ -1,4 +1,9 @@
-function About( {submittedData} ) {
+function About({ submittedData }) {
+    
+    const iconStyle = {
+        width: '16px',
+        heigth: '16px',
+    }
 
     return (
         <div className="about">
@@ -7,8 +12,10 @@ function About( {submittedData} ) {
                     <h1>{submittedData.firstName} {submittedData.lastName}</h1>
 
                     <div className="contact">
-                        <p>{submittedData.email}</p>
-                        <p>{submittedData.phone}</p>
+                        <p><img style={iconStyle} src="src/assets/mail.svg" /> {submittedData.email}</p>
+                        <p><img style={iconStyle} src="src/assets/phone.svg"/> {submittedData.phone}</p>
+                        <h2>About Me</h2>
+                        <p>{submittedData.summary}</p>
                     </div>     
                 </>
             )}
@@ -18,3 +25,4 @@ function About( {submittedData} ) {
 }
 
 export default About;
+

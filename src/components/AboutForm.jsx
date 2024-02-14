@@ -5,6 +5,7 @@ function AboutForm({ onSubmit }) {
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [summary, setSummary] = useState('');
     const [submitted, setSubmission] = useState(false);
 
     function handleFirstName(e) {
@@ -23,6 +24,10 @@ function AboutForm({ onSubmit }) {
         setEmail(e.target.value);
     }
 
+    function handleSummary(e) {
+        setSummary(e.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -31,6 +36,7 @@ function AboutForm({ onSubmit }) {
             lastName,
             phone,
             email,
+            summary,
         };
 
         setSubmission(true);
@@ -80,6 +86,7 @@ function AboutForm({ onSubmit }) {
                     disabled={submitted}
                     required
                 />
+                <textarea name="summary" placeholder="About me" value={summary} onChange={handleSummary} disabled={submitted}/>
                 <button type="submit">Submit</button>
             </form>
                 <button onClick={handleEdit}>Edit</button>
