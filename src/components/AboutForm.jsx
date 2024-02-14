@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-function AboutForm({onSubmit, initialData}) {
-    const [firstName, setFirstName] = useState(initialData?.firstName || '');
-    const [lastName, setLastName] = useState(initialData?.lastName || '');
-    const [phone, setPhone] = useState(initialData?.phone || '');
-    const [email, setEmail] = useState(initialData?.email || '');
+function AboutForm({ onSubmit }) {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [submitted, setSubmission] = useState(false);
 
     function handleFirstName(e) {
         setFirstName(e.target.value);
@@ -32,7 +33,12 @@ function AboutForm({onSubmit, initialData}) {
             email,
         };
 
+        setSubmission(true);
         onSubmit(formData);
+    }
+
+    const handleEdit = () => {
+        setSubmission(false);
     }
 
     return (
@@ -44,6 +50,7 @@ function AboutForm({onSubmit, initialData}) {
                     placeholder="First Name"
                     value={firstName}
                     onChange={handleFirstName}
+                    disabled={submitted}
                     required
                 />
                 <input
@@ -52,6 +59,7 @@ function AboutForm({onSubmit, initialData}) {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={handleLastName}
+                    disabled={submitted}
                     required
                 />
                 <input
@@ -60,6 +68,7 @@ function AboutForm({onSubmit, initialData}) {
                     placeholder="Phone Number"
                     value={phone}
                     onChange={handlePhone}
+                    disabled={submitted}
                     required
                 />
                 <input
@@ -68,10 +77,12 @@ function AboutForm({onSubmit, initialData}) {
                     placeholder="Email"
                     value={email}
                     onChange={handleEmail}
+                    disabled={submitted}
                     required
                 />
                 <button type="submit">Submit</button>
             </form>
+                <button onClick={handleEdit}>Edit</button>
         </div>
     )
 }
