@@ -13,6 +13,9 @@ function DOM() {
         <>
             <div className="about-form-section">
                 <AboutForm onSubmit={handleFormSubmit} />
+            </div>
+
+            <div className="cv-page">
                 <About submittedData={submittedData}/>
             </div>
         </>
