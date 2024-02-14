@@ -1,8 +1,8 @@
 function About({ submittedData }) {
     
     const iconStyle = {
-        width: '16px',
-        heigth: '16px',
+        width: '24px',
+        heigth: '24px',
     }
 
     return (

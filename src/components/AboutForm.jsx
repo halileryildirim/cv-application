@@ -49,6 +49,7 @@ function AboutForm({ onSubmit }) {
 
     return (
         <div className="about-form">
+            <h2>Personal Info</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     name="firstname"
@@ -86,10 +87,17 @@ function AboutForm({ onSubmit }) {
                     disabled={submitted}
                     required
                 />
-                <textarea name="summary" placeholder="About me" value={summary} onChange={handleSummary} disabled={submitted}/>
-                <button type="submit">Submit</button>
+                <textarea
+                    name="summary"
+                    placeholder="About me"
+                    value={summary}
+                    onChange={handleSummary}
+                    disabled={submitted}
+                />
+                <button type="submit" disabled={submitted}>Save</button>
             </form>
                 <button onClick={handleEdit}>Edit</button>
+                
         </div>
     )
 }
