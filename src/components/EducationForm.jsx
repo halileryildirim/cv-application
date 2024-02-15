@@ -4,8 +4,8 @@ import React, { useState } from "react";
 function EducationForm( {onSubmit}) {
     const [school, setSchool] = useState('');
     const [degree, setDegree] = useState('');
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const [ongoing, setOngoing] = useState(false);
     const [aboutEducation, setAboutEducation] = useState('');
     const [submitted, setSubmission] = useState(false);
@@ -16,10 +16,10 @@ function EducationForm( {onSubmit}) {
     const handleEndDate = (e) => { setEndDate(e.target.value); }
     const handleOngoing = () => { setOngoing(!ongoing); }
     const handleAbouts = (e) => { setAboutEducation(e.target.value); }
+    const handleEdit = () => {setSubmission(false);}
 
     function handleSubmit(e) {
         e.preventDefault();
-
         const educationData = {
             school,
             degree,
@@ -28,13 +28,10 @@ function EducationForm( {onSubmit}) {
             ongoing,
             aboutEducation,
         }
-
         setSubmission(true);
         onSubmit(educationData);
     }
-
-    const handleEdit = () => {setSubmission(false);}
-
+    
     return (
         <div className="education-form">
             <h2>Add Education</h2>
@@ -93,5 +90,10 @@ function EducationForm( {onSubmit}) {
         </div>
     )
 }
-{/* Eğitimleri submit ederken bir array ile gönder, display componentta bu eğitimleri mapleyerek renderla.*/}
+{/*
+Eğitimleri submit ederken bir array ile gönder, display componentta bu eğitimleri mapleyerek renderla. 
+Eğitimleri .map ile renderlarken Reacttaki ID veya key neyse olması gerekeni unutma!!
+Eğitimlere ayrıca display kısmında silme butonu eklemek gerekecek. 
+O zaman eğitim editleme işi de display'e kalıyor. Nasıl olacak????
+*/}
 export default EducationForm;

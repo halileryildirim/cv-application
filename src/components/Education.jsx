@@ -1,7 +1,6 @@
 function Education( {submittedData} ) {
     return (
         <div className="education">
-            <h2>Education</h2>
             {submittedData && (
                 <>
                 <h3>{submittedData.school}</h3>
