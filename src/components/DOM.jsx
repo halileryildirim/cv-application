@@ -32,7 +32,7 @@ function DOM() {
     }
     
     return (
-        <body>
+        <div className="container">
             <div className="form-section">
                 <div className="about-form-section">
                     <AboutForm onSubmit={handleAboutSubmit} />
@@ -56,7 +56,7 @@ function DOM() {
                 <h2>Skills</h2>
                 <Skills skills={skills} />
             </div>
-        </body>        
+        </div>        
     )
 }
 

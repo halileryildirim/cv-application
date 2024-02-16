@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/AboutForm.css'
 
 function AboutForm({ onSubmit }) {
     const [firstName, setFirstName] = useState('');
@@ -51,42 +52,46 @@ function AboutForm({ onSubmit }) {
         <div className="about-form">
             <h2>Personal Info</h2>
             <form onSubmit={handleSubmit}>
-                <input
-                    name="firstname"
-                    type="text"
-                    placeholder="First Name"
-                    value={firstName}
-                    onChange={handleFirstName}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    name="lastname"
-                    type="text"
-                    placeholder="Last Name"
-                    value={lastName}
-                    onChange={handleLastName}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    name="phone"
-                    type="tel"
-                    placeholder="Phone Number"
-                    value={phone}
-                    onChange={handlePhone}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    name="mail"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleEmail}
-                    disabled={submitted}
-                    required
-                />
+                <div className="name-section">
+                    <input
+                        name="firstname"
+                        type="text"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={handleFirstName}
+                        disabled={submitted}
+                        required
+                    />
+                    <input
+                        name="lastname"
+                        type="text"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={handleLastName}
+                        disabled={submitted}
+                        required
+                    />
+                </div>
+                <div className="contact-section">
+                    <input
+                        name="phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        value={phone}
+                        onChange={handlePhone}
+                        disabled={submitted}
+                        required
+                    />
+                    <input
+                        name="mail"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleEmail}
+                        disabled={submitted}
+                        required
+                    />
+                </div>
                 <textarea
                     name="summary"
                     placeholder="About me"
@@ -94,9 +99,12 @@ function AboutForm({ onSubmit }) {
                     onChange={handleSummary}
                     disabled={submitted}
                 />
-                <button type="submit" disabled={submitted}>Save</button>
+                <div className="button-container">
+                    <button id="save-button" type="submit" disabled={submitted}>Save</button>
+                    <button id="edit-button" type="button" onClick={handleEdit}>Edit</button>
+                </div>
             </form>
-                <button onClick={handleEdit}>Edit</button>
+                
                 
         </div>
     )

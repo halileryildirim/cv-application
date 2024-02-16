@@ -1,0 +1,33 @@
+.about {
+    text-align: center;
+}
+
+.about h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.about .contact img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact-details p{
+    margin-top: 4px;
+    
+}
+
+.about-details {
+    text-align: start;
+}
+
+.about-details h3 {
+    margin: 0;
+    padding: 0;
+}
