@@ -7,6 +7,7 @@ import Work from "./Work";
 import WorkForm from "./WorkForm";
 import Skills from "./Skills";
 import SkillsForm from "./SkillsForm";
+import "../styles/DOM.css";
 
 function DOM() {
     const [aboutData, setAboutData] = useState(null);
@@ -14,16 +15,16 @@ function DOM() {
     const [workData, setWorkData] = useState(null);
     const [skills, setSkills] = useState([]);
 
-    function handleAboutSubmit(formData) {
-        setAboutData(formData);
+    function handleAboutSubmit(about) {
+        setAboutData(about);
     }
 
-    function handleEducationSubmit(formData) {
-        setEducationData(formData);
+    function handleEducationSubmit(educations) {
+        setEducationData(educations);
     }
 
-    function handleWorkSubmit(formData) {
-        setWorkData(formData);
+    function handleWorkSubmit(experiences) {
+        setWorkData(experiences);
     }
 
     function handleSkillData(newSkills) {
@@ -31,20 +32,21 @@ function DOM() {
     }
     
     return (
-        <>
-            <div className="about-form-section">
-                <AboutForm onSubmit={handleAboutSubmit} />
+        <body>
+            <div className="form-section">
+                <div className="about-form-section">
+                    <AboutForm onSubmit={handleAboutSubmit} />
+                </div>
+                <div className="education-form-section">
+                    <EducationForm onSubmit={handleEducationSubmit} />
+                </div>
+                <div className="work-form-section">
+                    <WorkForm onSubmit={handleWorkSubmit} />
+                </div>
+                <div className="skills-section">
+                    <SkillsForm onSubmit={handleSkillData} />
+                </div>
             </div>
-            <div className="education-form-section">
-                <EducationForm onSubmit={handleEducationSubmit} />
-            </div>
-            <div className="work-form-section">
-                <WorkForm onSubmit={handleWorkSubmit} />
-            </div>
-            <div className="skills-section">
-                <SkillsForm onSubmit={handleSkillData} />
-            </div>
-
             <div className="cv-page">
                 <About submittedData={aboutData} />
                 <h2>Education</h2>
@@ -54,7 +56,7 @@ function DOM() {
                 <h2>Skills</h2>
                 <Skills skills={skills} />
             </div>
-        </>        
+        </body>        
     )
 }
 
