@@ -14,13 +14,11 @@
 
 .contact-details {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
 }
 
-.contact-details p{
+.contact-details p {
     margin-top: 4px;
-    
 }
 
 .about-details {
@@ -30,4 +28,8 @@
 .about-details h3 {
     margin: 0;
     padding: 0;
+}
+
+.about-details p {
+    margin-top: 8px;
 }

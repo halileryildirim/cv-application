@@ -47,10 +47,10 @@ function AboutForm({ onSubmit }) {
     const handleEdit = () => {
         setSubmission(false);
     }
-
+    
     return (
         <div className="about-form">
-            <h2>Personal Info</h2>
+            <h2>PERSONAL INFO</h2>
             <form onSubmit={handleSubmit}>
                 <div className="name-section">
                     <input
@@ -98,6 +98,7 @@ function AboutForm({ onSubmit }) {
                     value={summary}
                     onChange={handleSummary}
                     disabled={submitted}
+                    required
                 />
                 <div className="button-container">
                     <button id="save-button" type="submit" disabled={submitted}>Save</button>

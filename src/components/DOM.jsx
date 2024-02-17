@@ -61,3 +61,10 @@ function DOM() {
 }
 
 export default DOM;
+
+{/* 
+Formların daha iyi görünmesi için state introda kullanılan tıklayınca show disabled sistemi kullan.
+Form componentlarındaki başlık kısmını burda divlere taşı, bu divlere onclick özelliği ver.
+Bu divlerdeki onclick özellikleri ile state güncellemesini yap. Tüm formlar açıkta çirkin oluyor.
+*/}
+

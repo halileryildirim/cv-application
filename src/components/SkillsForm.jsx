@@ -16,8 +16,8 @@ function SkillsForm({ onSubmit }) {
 
     return (
         <div>
+            <h2>ADD SKILLS</h2>
             <form onSubmit={handleSubmit}>
-                <label>Add Skill</label>
                 <input
                     type='text'
                     value={skill}

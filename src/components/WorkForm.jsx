@@ -33,7 +33,7 @@ function WorkForm( {onSubmit} ) {
 
     return (
         <div className="education-form">
-            <h2>Add Work Experience</h2>
+            <h2>ADD WORK EXPERIENCE</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
