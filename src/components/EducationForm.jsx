@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 
 
 function EducationForm( {onSubmit}) {
@@ -32,7 +32,7 @@ function EducationForm( {onSubmit}) {
     function handleSubmit(e) {
         e.preventDefault();
         setSubmission(true);
-        onSubmit(educationInfo);
+        onSubmit((prevEducations) => [...prevEducations, educationInfo]);
 
     }
     

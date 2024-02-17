@@ -1,15 +1,17 @@
 function Education( {submittedData} ) {
     return (
-        <div className="education">
-            {submittedData && (
-                <>
-                <h3>{submittedData.school}</h3>
-                    <p>{submittedData.degree}</p>
-                    <p>{submittedData.startDate} - {submittedData.ongoing ? "Ongoing" : submittedData.endDate}</p>
-                    <p>{submittedData.aboutEducation}</p>
-                </>
-            )}
-        </div>
+        <>
+        {submittedData.length > 0 && submittedData.map((education, index) => {
+                    return (
+                    <div key={index} className="education">
+                        <h3>{education.school}</h3>
+                        <p>{education.degree}</p>
+                        <p>{education.startDate} - {education.ongoing ? "Ongoing" : education.endDate}</p>
+                        <p>{education.aboutEducation}</p>
+                    </div>
+                    )
+                })}
+        </>
     )
 }
 
