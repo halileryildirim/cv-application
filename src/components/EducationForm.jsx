@@ -1,35 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 
 function EducationForm( {onSubmit}) {
-    const [school, setSchool] = useState('');
-    const [degree, setDegree] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [ongoing, setOngoing] = useState(false);
-    const [aboutEducation, setAboutEducation] = useState('');
     const [submitted, setSubmission] = useState(false);
+    const [educationInfo, editEducationInfo] = useState({
+        school: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+        ongoing: false,
+        aboutEducation: '',
+    });
 
-    const handleSchool = (e) => { setSchool(e.target.value); }
-    const handleDegree = (e) => { setDegree(e.target.value); }
-    const handleStartDate = (e) => { setStartDate(e.target.value); }
-    const handleEndDate = (e) => { setEndDate(e.target.value); }
-    const handleOngoing = () => { setOngoing(!ongoing); }
-    const handleAbouts = (e) => { setAboutEducation(e.target.value); }
     const handleEdit = () => {setSubmission(false);}
+    function handleInfo(event) {
+        const { name, value, type, checked } = event.target;
+        if (type === 'checkbox') {
+            editEducationInfo((prevInfo) => ({
+                ...prevInfo,
+                [name]: checked,
+            }))
+        }
+        else {
+            editEducationInfo((prevInfo) => ({
+                ...prevInfo,
+                [name]: value,
+            }))
+        }
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
-        const educationData = {
-            school,
-            degree,
-            startDate,
-            endDate,
-            ongoing,
-            aboutEducation,
-        }
         setSubmission(true);
-        onSubmit(educationData);
+        onSubmit(educationInfo);
+
     }
     
     return (
@@ -40,8 +44,8 @@ function EducationForm( {onSubmit}) {
                     type="text"
                     name="school"
                     placeholder="Name of University"
-                    value={school}
-                    onChange={handleSchool}
+                    value={educationInfo.school}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
@@ -49,39 +53,39 @@ function EducationForm( {onSubmit}) {
                     type="text"
                     name="degree"
                     placeholder="Degree"
-                    value={degree}
-                    onChange={handleDegree}
+                    value={educationInfo.degree}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
                 <input
                     type="date"
-                    name="startdate"
-                    value={startDate}
-                    onChange={handleStartDate}
+                    name="startDate"
+                    value={educationInfo.startDate}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
                 <input
                     type="date"
-                    name="enddate"
-                    value={endDate}
-                    onChange={handleEndDate}
-                    disabled={ongoing || submitted}
+                    name="endDate"
+                    value={educationInfo.endDate}
+                    onChange={handleInfo}
+                    disabled={educationInfo.ongoing || submitted}
                     required
                 />
                 <label>Ongoing</label>
                 <input
                     name="ongoing"
                     type="checkbox"
-                    onClick={handleOngoing}
+                    onClick={handleInfo}
                     disabled={submitted}
                 />
                 <textarea
-                    name="aboutedu"
+                    name="aboutEducation"
                     placeholder="About Education"
-                    value={aboutEducation}
-                    onChange={handleAbouts}
+                    value={educationInfo.aboutEducation}
+                    onChange={handleInfo}
                     disabled={submitted}
                 />
                 <button type="submit" disabled={submitted}>Add Education</button>
