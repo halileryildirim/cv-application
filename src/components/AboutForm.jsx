@@ -2,46 +2,29 @@ import React, { useState } from "react";
 import '../styles/AboutForm.css'
 
 function AboutForm({ onSubmit }) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [summary, setSummary] = useState('');
     const [submitted, setSubmission] = useState(false);
+    const [aboutInfo, setAboutInfo] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        summary: '',
+    })
 
-    function handleFirstName(e) {
-        setFirstName(e.target.value);
-    }
-    
-    function handleLastName(e) {
-        setLastName(e.target.value);
-    }
-
-    function handlePhone(e) {
-        setPhone(e.target.value);
-    }
-
-    function handleEmail(e) {
-        setEmail(e.target.value);
-    }
-
-    function handleSummary(e) {
-        setSummary(e.target.value);
-    }
+function handleInfo(e) {
+    const { name, value } = e.target;
+    setAboutInfo(prevInfo => ({
+        ...prevInfo,
+        [name]: value
+    }));
+}
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = {
-            firstName,
-            lastName,
-            phone,
-            email,
-            summary,
-        };
-
         setSubmission(true);
-        onSubmit(formData);
+        onSubmit(aboutInfo);
+        
     }
 
     const handleEdit = () => {
@@ -54,20 +37,20 @@ function AboutForm({ onSubmit }) {
             <form onSubmit={handleSubmit}>
                 <div className="name-section">
                     <input
-                        name="firstname"
+                        name="firstName"
                         type="text"
                         placeholder="First Name"
-                        value={firstName}
-                        onChange={handleFirstName}
+                        value={aboutInfo.firstName}
+                        onChange={handleInfo}
                         disabled={submitted}
                         required
                     />
                     <input
-                        name="lastname"
+                        name="lastName"
                         type="text"
                         placeholder="Last Name"
-                        value={lastName}
-                        onChange={handleLastName}
+                        value={aboutInfo.lastName}
+                        onChange={handleInfo}
                         disabled={submitted}
                         required
                     />
@@ -77,17 +60,17 @@ function AboutForm({ onSubmit }) {
                         name="phone"
                         type="tel"
                         placeholder="Phone Number"
-                        value={phone}
-                        onChange={handlePhone}
+                        value={aboutInfo.phone}
+                        onChange={handleInfo}
                         disabled={submitted}
                         required
                     />
                     <input
-                        name="mail"
+                        name="email"
                         type="email"
                         placeholder="Email"
-                        value={email}
-                        onChange={handleEmail}
+                        value={aboutInfo.email}
+                        onChange={handleInfo}
                         disabled={submitted}
                         required
                     />
@@ -95,9 +78,10 @@ function AboutForm({ onSubmit }) {
                 <textarea
                     name="summary"
                     placeholder="About me"
-                    value={summary}
-                    onChange={handleSummary}
+                    value={aboutInfo.summary}
+                    onChange={handleInfo}
                     disabled={submitted}
+                    maxLength={300}
                     required
                 />
                 <div className="button-container">
