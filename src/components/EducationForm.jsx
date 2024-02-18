@@ -12,7 +12,8 @@ function EducationForm( {onSubmit}) {
         aboutEducation: '',
     });
 
-    const handleEdit = () => {setSubmission(false);}
+    const handleEdit = () => { setSubmission(false); }
+    
     function handleInfo(event) {
         const { name, value, type, checked } = event.target;
         if (type === 'checkbox') {
@@ -59,7 +60,7 @@ function EducationForm( {onSubmit}) {
                     required
                 />
                 <input
-                    type="date"
+                    type="month"
                     name="startDate"
                     value={educationInfo.startDate}
                     onChange={handleInfo}
@@ -67,7 +68,7 @@ function EducationForm( {onSubmit}) {
                     required
                 />
                 <input
-                    type="date"
+                    type="month"
                     name="endDate"
                     value={educationInfo.endDate}
                     onChange={handleInfo}

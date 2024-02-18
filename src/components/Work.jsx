@@ -1,14 +1,17 @@
 function Work( {submittedData} ) {
     return (
-        <div className="work">
-            {submittedData && (
-                <>
-                    <h3>{submittedData.role} at {submittedData.company}</h3>
-                    <p>{submittedData.startDate} - {submittedData.ongoing ? "Ongoing" : submittedData.endDate} </p>
-                    <p>{submittedData.aboutWork}</p>
-                </>
-            )}
-        </div>
+        <>
+            {submittedData.length > 0 && submittedData.map((work, index) => {
+                return (
+                    <div key={index} className="work">
+                        <h3>{work.role} at {work.company}</h3>
+                        <p>{work.startDate} - {work.ongoing ? "Ongoing" : work.endDate} </p>
+                        <p>{work.aboutWork}</p>
+                    </div>
+                )
+            })}
+        </>
+
     )
 }
 

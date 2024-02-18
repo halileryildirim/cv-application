@@ -1,34 +1,38 @@
 import React, { useState } from 'react';
 
 function WorkForm( {onSubmit} ) {
-    const [company, editCompany] = useState('');
-    const [role, editRole] = useState('');
-    const [startDate, editStartDate] = useState('');
-    const [endDate, editEndDate] = useState('');
-    const [ongoing, editOngoing] = useState(false);
-    const [aboutWork, editAbout] = useState('');
     const [submitted, setSubmission] = useState(false);
+    const [workInfo, editWorkInfo] = useState({
+        company: '',
+        role: '',
+        startDate: '',
+        endDate: '',
+        ongoing: false,
+        aboutWork: '',
+    })
 
-    const handleCompany = (e) => { editCompany(e.target.value); };
-    const handleRole = (e) => { editRole(e.target.value); };
-    const handleStartDate = (e) => { editStartDate(e.target.value); };
-    const handleEndDate = (e) => { editEndDate(e.target.value); };
-    const handleOngoing = (e) => { editOngoing(!ongoing); };
-    const handleAbouts = (e) => { editAbout(e.target.value); }
-    const handleEdit = () => {setSubmission(false);}
+    const handleEdit = () => { setSubmission(false); }
+
+    function handleInfo(event) {
+        const { name, value, type, checked } = event.target;
+        if (type === 'checkbox') {
+            editWorkInfo((prevInfo) => ({
+                ...prevInfo,
+                [name]: checked
+            }))
+        }
+        else {
+            editWorkInfo((prevInfo) => ({
+                ...prevInfo,
+                [name]: value
+            }))
+        }
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
-        const workData = {
-            company,
-            role,
-            startDate,
-            endDate,
-            ongoing,
-            aboutWork,
-        }
         setSubmission(true);
-        onSubmit(workData);
+        onSubmit((prevWorks) => [...prevWorks, workInfo]);
     }
 
     return (
@@ -39,8 +43,8 @@ function WorkForm( {onSubmit} ) {
                     type="text"
                     name="company"
                     placeholder="Name of Company"
-                    value={company}
-                    onChange={handleCompany}
+                    value={workInfo.company}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
@@ -48,39 +52,39 @@ function WorkForm( {onSubmit} ) {
                     type="text"
                     name="role"
                     placeholder="Role"
-                    value={role}
-                    onChange={handleRole}
+                    value={workInfo.role}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
                 <input
-                    type="date"
-                    name="startdate"
-                    value={startDate}
-                    onChange={handleStartDate}
+                    type="month"
+                    name="startDate"
+                    value={workInfo.startDate}
+                    onChange={handleInfo}
                     disabled={submitted}
                     required
                 />
                 <input
-                    type="date"
-                    name="enddate"
-                    value={endDate}
-                    onChange={handleEndDate}
-                    disabled={ongoing || submitted}
+                    type="month"
+                    name="endDate"
+                    value={workInfo.endDate}
+                    onChange={handleInfo}
+                    disabled={workInfo.ongoing || submitted}
                     required
                 />
                 <label>Ongoing</label>
                 <input
                     name="ongoing"
                     type="checkbox"
-                    onClick={handleOngoing}
+                    onClick={handleInfo}
                     disabled={submitted}
                 />
                 <textarea
-                    name="aboutedu"
+                    name="aboutWork"
                     placeholder="About Your Role at Company"
-                    value={aboutWork}
-                    onChange={handleAbouts}
+                    value={workInfo.aboutWork}
+                    onChange={handleInfo}
                     disabled={submitted}
                 />
                 <button type="submit" disabled={submitted}>Add Work Experience</button>

@@ -12,7 +12,7 @@ import "../styles/DOM.css";
 function DOM() {
     const [aboutData, setAboutData] = useState(null);
     const [educationData, setEducationData] = useState([]);
-    const [workData, setWorkData] = useState(null);
+    const [workData, setWorkData] = useState([]);
     const [skills, setSkills] = useState([]);
 
     function handleAboutSubmit(about) {
