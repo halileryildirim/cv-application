@@ -51,7 +51,7 @@ function WorkForm( {onSubmit} ) {
                 <input
                     type="text"
                     name="role"
-                    placeholder="Role"
+                    placeholder="Position"
                     value={workInfo.role}
                     onChange={handleInfo}
                     disabled={submitted}
@@ -82,7 +82,7 @@ function WorkForm( {onSubmit} ) {
                 />
                 <textarea
                     name="aboutWork"
-                    placeholder="About Your Role at Company"
+                    placeholder="About Your Position"
                     value={workInfo.aboutWork}
                     onChange={handleInfo}
                     disabled={submitted}
