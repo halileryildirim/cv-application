@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/WorkForm.css'
 
 function WorkForm( {onSubmit} ) {
     const [submitted, setSubmission] = useState(false);
@@ -11,7 +12,7 @@ function WorkForm( {onSubmit} ) {
         aboutWork: '',
     })
 
-    const handleEdit = () => { setSubmission(false); }
+    const handleFormEdit = () => { setSubmission(false); }
 
     function handleInfo(event) {
         const { name, value, type, checked } = event.target;
@@ -32,54 +33,60 @@ function WorkForm( {onSubmit} ) {
     function handleSubmit(e) {
         e.preventDefault();
         setSubmission(true);
-        onSubmit((prevWorks) => [...prevWorks, workInfo]);
+        onSubmit(workInfo);
     }
 
     return (
-        <div className="education-form">
-            <h2>ADD WORK EXPERIENCE</h2>
+        <div className="work-form">
+            <h2>Work Experience</h2>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="company"
-                    placeholder="Name of Company"
-                    value={workInfo.company}
-                    onChange={handleInfo}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    type="text"
-                    name="role"
-                    placeholder="Position"
-                    value={workInfo.role}
-                    onChange={handleInfo}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    type="month"
-                    name="startDate"
-                    value={workInfo.startDate}
-                    onChange={handleInfo}
-                    disabled={submitted}
-                    required
-                />
-                <input
-                    type="month"
-                    name="endDate"
-                    value={workInfo.endDate}
-                    onChange={handleInfo}
-                    disabled={workInfo.ongoing || submitted}
-                    required
-                />
-                <label>Ongoing</label>
-                <input
-                    name="ongoing"
-                    type="checkbox"
-                    onClick={handleInfo}
-                    disabled={submitted}
-                />
+                <div className='form-row'>
+                    <input
+                        type="text"
+                        name="company"
+                        placeholder="Name of Company"
+                        value={workInfo.company}
+                        onChange={handleInfo}
+                        disabled={submitted}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="role"
+                        placeholder="Position"
+                        value={workInfo.role}
+                        onChange={handleInfo}
+                        disabled={submitted}
+                        required
+                    />
+                </div>
+                <div className='form-row' id='date-row'>
+                    <label>Start Date</label>
+                    <input
+                        type="month"
+                        name="startDate"
+                        value={workInfo.startDate}
+                        onChange={handleInfo}
+                        disabled={submitted}
+                        required
+                    />
+                    <label>End Date</label>
+                        <input
+                            type="month"
+                            name="endDate"
+                            value={workInfo.endDate}
+                            onChange={handleInfo}
+                            disabled={workInfo.ongoing || submitted}
+                            required
+                        />
+                    <label>Ongoing</label>
+                    <input
+                        name="ongoing"
+                        type="checkbox"
+                        onClick={handleInfo}
+                        disabled={submitted}
+                    />
+                </div>
                 <textarea
                     name="aboutWork"
                     placeholder="About Your Position"
@@ -87,9 +94,12 @@ function WorkForm( {onSubmit} ) {
                     onChange={handleInfo}
                     disabled={submitted}
                 />
-                <button type="submit" disabled={submitted}>Add Work Experience</button>
+                <div className='button-row'>
+                    <button type="submit" disabled={submitted}>Save</button>
+                    <button type='button'onClick={handleFormEdit}>Edit</button>
+                </div>
             </form>
-                <button onClick={handleEdit}>Edit</button>
+                
         </div>
     )
 }

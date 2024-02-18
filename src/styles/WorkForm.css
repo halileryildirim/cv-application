@@ -1,23 +1,26 @@
-.about-form {
+.work-form {
     max-width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-.about-form h2 {
+.work-form h2 {
     margin-top: 0;
 }
 
-form div {
+.work-form form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.work-form .form-row {
+    display: flex;
     justify-content: space-between;
     gap: 16px;
 }
 
-.about-form input[type="text"],
-.about-form input[type="tel"],
-.about-form input[type="email"] {
+.work-form input[type="text"],
+.work-form input[type="month"] {
     width: calc(50% - 8px);
     margin-bottom: 10px;
     padding: 8px;
@@ -27,22 +30,23 @@ form div {
     box-sizing: border-box;
 }
 
-.about-form textarea {
-    width: 100%;
+.work-form textarea {
+    width: calc(100% - 8px);
     margin-bottom: 10px;
     padding: 8px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    
-}
-
-.about-form textarea {
     height: 100px;
 }
 
-.about-form button {
+.work-form .button-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.work-form button {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -52,15 +56,15 @@ form div {
     cursor: pointer;
 }
 
-.about-form button:disabled {
+.work-form button:disabled {
     background-color: #ccc;
 }
 
-.about-form button:not(:disabled):hover {
+.work-form button:not(:disabled):hover {
     background-color: #023163;
 }
 
-.button-container {
+#date-row{
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 }

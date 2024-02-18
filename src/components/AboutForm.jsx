@@ -33,7 +33,7 @@ function handleInfo(e) {
     
     return (
         <div className="about-form">
-            <h2>PERSONAL INFO</h2>
+            <h2>Personal Info</h2>
             <form onSubmit={handleSubmit}>
                 <div className="name-section">
                     <input
