@@ -92,6 +92,7 @@ function WorkForm( {onSubmit} ) {
                     placeholder="About Your Position"
                     value={workInfo.aboutWork}
                     onChange={handleInfo}
+                    required
                     disabled={submitted}
                 />
                 <div className='button-row'>

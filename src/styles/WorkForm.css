@@ -14,9 +14,7 @@
 }
 
 .work-form .form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
+    margin-bottom: 10px;
 }
 
 .work-form input[type="text"],
@@ -44,6 +42,7 @@
 .work-form .button-row {
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .work-form button {
@@ -62,9 +61,4 @@
 
 .work-form button:not(:disabled):hover {
     background-color: #023163;
-}
-
-#date-row{
-    display: flex;
-    align-items: center;
 }
