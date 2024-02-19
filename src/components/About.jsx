@@ -1,4 +1,5 @@
 import '../styles/About.css'
+import assets from './Icons';
 
 function About({ submittedData }) {
     
@@ -15,8 +16,8 @@ function About({ submittedData }) {
 
                     <div className="contact">
                         <div className='contact-details'>
-                            <p><img style={iconStyle} src='/public/icons/mail.png'/> {submittedData.email}</p>
-                            <p><img style={iconStyle} src='/public/icons/phone.png' /> {submittedData.phone}</p>
+                            <p><img style={iconStyle} src={assets.mailIcon} /> {submittedData.email}</p>
+                            <p><img style={iconStyle} src={assets.phoneIcon} /> {submittedData.phone}</p>
                         </div>
                         <div className='about-details'>
                             <h3>About Me</h3>
