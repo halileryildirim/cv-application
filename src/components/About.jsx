@@ -15,8 +15,8 @@ function About({ submittedData }) {
 
                     <div className="contact">
                         <div className='contact-details'>
-                            <p><img style={iconStyle} src="src/assets/mail.svg" /> {submittedData.email}</p>
-                            <p><img style={iconStyle} src="src/assets/phone.svg"/> {submittedData.phone}</p>
+                            <p><img style={iconStyle} src='src/icons/mail.png' /> {submittedData.email}</p>
+                            <p><img style={iconStyle} src="src/icons/phone.png"/> {submittedData.phone}</p>
                         </div>
                         <div className='about-details'>
                             <h3>About Me</h3>
