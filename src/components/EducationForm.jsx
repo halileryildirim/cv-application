@@ -38,7 +38,6 @@ function EducationForm( {onSubmit}) {
     
     return (
         <div className="education-form">
-            <h2>Education</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <input
@@ -89,11 +88,12 @@ function EducationForm( {onSubmit}) {
                 </div>
                 <textarea
                     name="aboutEducation"
-                    placeholder="About Education"
+                    placeholder="About"
                     value={educationInfo.aboutEducation}
                     onChange={handleInfo}
                     required
                     disabled={submitted}
+                    maxLength={300}
                 />
                 <div className="button-row">
                     <button type="submit" disabled={submitted}>Save</button>

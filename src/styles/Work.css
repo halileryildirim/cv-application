@@ -1,0 +1,18 @@
+.work {
+    margin-bottom: 20px;
+}
+
+.work h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.work p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.work p:last-child {
+    margin-bottom: 0;
+}

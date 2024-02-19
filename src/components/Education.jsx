@@ -4,8 +4,9 @@ function Education({ submittedData }) {
         <div  className="education">
             {submittedData && (
                 <>
+                    <h2>Education</h2>
                     <h3>{submittedData.school}</h3>
-                    <p>{submittedData.degree}</p>
+                    <h4>{submittedData.degree}</h4>
                     <p>{submittedData.startDate} - {submittedData.ongoing ? "Ongoing" : submittedData.endDate}</p>
                     <p>{submittedData.aboutEducation}</p>
                 </>

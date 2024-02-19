@@ -38,7 +38,6 @@ function WorkForm( {onSubmit} ) {
 
     return (
         <div className="work-form">
-            <h2>Work Experience</h2>
             <form onSubmit={handleSubmit}>
                 <div className='form-row'>
                     <input
@@ -89,11 +88,12 @@ function WorkForm( {onSubmit} ) {
                 </div>
                 <textarea
                     name="aboutWork"
-                    placeholder="About Your Position"
+                    placeholder="About"
                     value={workInfo.aboutWork}
                     onChange={handleInfo}
                     required
                     disabled={submitted}
+                    maxLength={300}
                 />
                 <div className='button-row'>
                     <button type="submit" disabled={submitted}>Save</button>

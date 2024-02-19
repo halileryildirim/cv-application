@@ -1,9 +1,13 @@
-function Work( {submittedData} ) {
+import '../styles/Work.css'
+
+function Work({ submittedData }) {
     return (
         <div className="work">
             {submittedData && (
                 <>
-                    <h3>{submittedData.role} at {submittedData.company}</h3>
+                    <h2>Work Experience</h2>
+                    <h3>{submittedData.company}</h3>
+                    <h4>{submittedData.role}</h4>
                     <p>{submittedData.startDate} - {submittedData.ongoing ? "Ongoing" : submittedData.endDate} </p>
                     <p>{submittedData.aboutWork}</p>
                 </>

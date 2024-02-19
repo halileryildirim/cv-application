@@ -10,7 +10,11 @@ import "../styles/DOM.css";
 function DOM() {
     const [aboutData, setAboutData] = useState(null);
     const [educationData, setEducationData] = useState(null);
-    const [workData, setWorkData] = useState(null);
+    const [workData, setWorkData] = useState(null); 
+    const [aboutHidden, setAboutHidden] = useState(false);
+    const [educatioHidden, setEducatioHidden] = useState(true);
+    const [workHidden, setWorkHidden] = useState(true);
+
 
     function handleAboutSubmit(about) {
         setAboutData(about);
@@ -24,35 +28,50 @@ function DOM() {
         setWorkData(experiences);
     }
 
+    function handleAboutHidden() {
+        setAboutHidden(!aboutHidden);
+        setEducatioHidden(true);
+        setWorkHidden(true);
+    }
+
+    function handleEducationHidden() {
+        setAboutHidden(true);
+        setEducatioHidden(!educatioHidden);
+        setWorkHidden(true);
+    }
+
+    function handleWorkHidden() {
+        setAboutHidden(true);
+        setEducatioHidden(true);
+        setWorkHidden(!workHidden);
+    }
+
     return (
         <div className="container">
-            <div className="form-section">
-                <div className="about-form-section">
+            <div className="form-section" >
+                <h2 id="about-button" onClick={handleAboutHidden}>Personal Info</h2>
+                <div className="about-form-section" hidden={aboutHidden}>
                     <AboutForm onSubmit={handleAboutSubmit} />
                 </div>
-                <div className="education-form-section">
+
+                <h2 id="education-button" onClick={handleEducationHidden}>Education</h2>
+                <div className="education-form-section" hidden={educatioHidden}>
                     <EducationForm onSubmit={handleEducationSubmit} />
                 </div>
-                <div className="work-form-section">
+
+                <h2 id="work-button" onClick={handleWorkHidden}>Work Experience</h2>
+                <div className="work-form-section" hidden={workHidden}>
                     <WorkForm onSubmit={handleWorkSubmit} />
                 </div>
             </div>
             <div className="cv-page">
-                <About submittedData={aboutData} />
-                <h2>Education</h2>
-                <Education submittedData={educationData} />
-                <h2>Work Experience</h2>
-                <Work submittedData={workData} />
+                <div id="about-placeholder"><About submittedData={aboutData} /></div>
+                <div id="education-placeholder"><Education submittedData={educationData} /></div>
+                <div id="work-placeholder"><Work submittedData={workData} /></div>
             </div>
         </div>        
     )
 }
 
 export default DOM;
-
-{/* 
-Formların daha iyi görünmesi için state introda kullanılan tıklayınca show disabled sistemi kullan.
-Form componentlarındaki başlık kısmını burda divlere taşı, bu divlere onclick özelliği ver.
-Bu divlerdeki onclick özellikleri ile state güncellemesini yap. Tüm formlar açıkta çirkin oluyor.
-*/}
 
